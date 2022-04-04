@@ -6,17 +6,24 @@ const divStyles = {
 }
 
 const SearchBar = () => {
-    const [searchInput, setSearchInput] = useState(null);
+    const [searchInput, setSearchInput] = useState("");
 
     const handleChange = (e) => {
         setSearchInput(e.target.value);
     }
+    const [pageNum, setPageNum] = useState(1);
 
     const [repos, setRepos] = useState([]);
+    const url = `https://api.github.com/users/${searchInput}/repos?page=${pageNum}&per_page=10`;
 
     const handleClick = async () => {
+        if(!searchInput) {
+            alert("No input");
+            return;
+        }
+        
         console.log(searchInput);
-        await fetch(`https://api.github.com/users/${searchInput}/repos` ,{method:"GET"})
+        await fetch(url ,{method:"GET"})
             .then(res => res.json())
             .then(data => setRepos(data))
             .catch(e => {
