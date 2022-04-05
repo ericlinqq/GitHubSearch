@@ -71,7 +71,7 @@ const Home = () => {
             <input type="text" placeholder="search" value={searchInput} onChange={handleChange}/>
             <button onClick={handleClick}>Search</button>
         </div> */}
-        <header>jserv</header>
+        <header>GitHub Username: jserv</header>
         <h2>Repositories</h2>
         <p>{isLoading ? "Loading..." : ""}</p>
         <Results repos={repos}/>
