@@ -12,32 +12,34 @@ const Home = () => {
     //     setSearchInput(e.target.value);
     // }
 
-    let pageNum = 1;
+    let page = 1;
     const [repos, setRepos] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(false);
     const loadMoreRepos = () => {
         // if(!searchInput) {
         //     alert("No input");
         //     return;
         // }
-        
-        console.log('page: ', pageNum);
-        fetch(`https://api.github.com/users/jserv/repos?page=${pageNum}&per_page=10`,
-            {method:"GET",
-             headers:{
-                 authorization: `Token ${process.env.REACT_APP_GH}`
-             }
+        setIsLoading(true);
+        console.log('page: ', page);
+        fetch(`https://api.github.com/users/jserv/repos?page=${page}&per_page=10`,
+            {
+                method:"GET",
+                headers:{
+                    authorization: `Token ${process.env.REACT_APP_GH}`
+                }
             })
             .then(res => res.json())
             .then(data => {
-                setRepos(oldRepos => [...oldRepos, ...data])
+                setIsLoading(false);
+                setRepos(oldRepos => [...oldRepos, ...data]);
             })
             .catch(e => {
                 console.log(e);
-            })
+            });
 
-        pageNum += 1;
-        console.log('page2: ', pageNum); 
+        page += 1;
+        console.log('page2: ', page); 
     };
 
     // const handleClick = () => {
@@ -48,15 +50,17 @@ const Home = () => {
 
     const handleScroll = (e) => {
         if(
-            window.innerHeight + e.target.documentElement.scrollTop + 1 >=
-            e.target.documentElement.scrollHeight
+            (window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+            e.target.documentElement.scrollHeight) && !isLoading 
         ){
             loadMoreRepos();
         }
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
+        loadMoreRepos();
+        window.addEventListener('scroll', handleScroll);
+        // return window.removeEventListener('scroll', handleScroll)
     }, []);
 
     console.log(repos);
@@ -67,7 +71,9 @@ const Home = () => {
             <input type="text" placeholder="search" value={searchInput} onChange={handleChange}/>
             <button onClick={handleClick}>Search</button>
         </div> */}
+        <header>jserv</header>
         <h2>Repositories</h2>
+        <p>{isLoading ? "Loading..." : ""}</p>
         <Results repos={repos}/>
     </>
     );

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import RepoDetails from './RepoDetails';
 
 const Results = (props) => {
     const { repos } = props;
@@ -8,14 +10,16 @@ const Results = (props) => {
     repos.length !== 0 ? (
         repos.map((item) => (
         <li key={item.id}>
-            <a>{item.name}</a>
-            <p>stargazers count: {item.stargazers_count}</p>
+            <Link to={{pathname: `/users/jserv/repos/${item.name}`, state: {repoName: 123}}}>
+                {item.name}
+            </Link>
+            <p>stargazers count: {item.stargazers_count}★</p>
         </li>
         )) 
     ) : (
         <li>No repos found</li>
     );
-
+  
     return (
         <ul>{listRepos}</ul>
     );
