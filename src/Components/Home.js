@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Results from './Results';
 
-const divStyles = {
-    padding: 30,
-}
+// const divStyles = {
+//     padding: 30,
+// }
 
 const Home = () => {
     // const [searchInput, setSearchInput] = useState("");
