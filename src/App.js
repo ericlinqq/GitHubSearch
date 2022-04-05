@@ -1,12 +1,12 @@
 import React from 'react';
-import SearchBar from './Components/SearchBar';
+import Home from './Components/Home';
 
 // Hello
 function App() {
   return (
   <div>
     <h1>Repo Search</h1>
-    <SearchBar />
+    <Home />
   </div>
   );
 }
