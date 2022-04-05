@@ -1,4 +1,7 @@
-## Project structure:
+GitHubSearch
+===
+This is a [React.js](https://reactjs.org/) project for browsing [Github](https://github.com/) user repository page using github API.
+## Project Structure:
 ```
 .
 src
@@ -10,3 +13,6 @@ src
 └── index 頁面渲染
 
 ```
+## To do 
+- Add search function
+- Add viewing-code function
