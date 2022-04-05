@@ -5,7 +5,7 @@ This is a [React.js](https://reactjs.org/) project for browsing [Github](https:/
 ```
 .
 src
-├── components  元件庫
+├── Components  元件庫
 │   ├── Home   主頁面
 │   ├── Results  repository列表
 │   └── RepoDetails    repository頁面
