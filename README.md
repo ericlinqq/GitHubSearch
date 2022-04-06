@@ -1,6 +1,7 @@
 GitHubSearch
 ===
 This is a [React.js](https://reactjs.org/) project for browsing [Github](https://github.com/) user repository page using github API.
+[![Edit GitHubSearch](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/still-framework-pr1t3s)
 ## Project Structure:
 ```
 .
